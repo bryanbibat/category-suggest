@@ -3,7 +3,7 @@ Stemmer = require('../lib/stemmer').Stemmer
 describe 'stemmer', ->
 
   it 'should lowercase words', ->
-    expect(Stemmer.stem("ABC")).toBe("abc")
+    expect(Stemmer.prepareWord("ABC")).toBe("abc")
 
   it 'should remove apostrophes', ->
     expect(Stemmer.removeApostrophe("a'bc")).toBe("a'bc")
