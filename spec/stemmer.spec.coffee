@@ -152,5 +152,12 @@ describe 'stemmer', ->
       ["knot", "knot"]
       ["knots", "knot"]
     ]
-    #for testCase in cases
-      #expect(Stemmer.stem(testCase[0])).toBe(testCase[1])
+    for testCase in cases
+      expect(Stemmer.stem(testCase[0])).toBe(testCase[1])
+
+  it 'should work for conspicuous', ->
+    expect(Stemmer.getStartR1("conspicuous")).toBe(3)
+    expect(Stemmer.getStartR2("conspicuous", 3)).toBe(7)
+    expect(Stemmer.doStep2("conspicuous", 3)).toBe("conspicuous")
+    expect(Stemmer.doStep4("conspicuous", 7)).toBe("conspicu")
+    expect(Stemmer.stem("conspicuous")).toBe("conspicu")
