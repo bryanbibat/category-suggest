@@ -10,6 +10,21 @@ describe 'stemmer', ->
     expect(Stemmer.removeApostrophe("bryan's")).toBe("bryan")
     expect(Stemmer.removeApostrophe("jesus'")).toBe("jesus")
 
+  it 'should calculate Region 1', ->
+    expect(Stemmer.getStartR1("mad")).toBe(3)
+    expect(Stemmer.getStartR1("madenning")).toBe(3)
+    expect(Stemmer.getStartR1("stemmer")).toBe(4)
+
+  it 'should calculate Region 2', ->
+    expect(Stemmer.getStartR2("madenning", 3)).toBe(5)
+    expect(Stemmer.getStartR2("stemmer", 4)).toBe(7)
+    expect(Stemmer.getStartR2("conditional", 3)).toBe(6)
+
+  it 'should replace Ys', ->
+    expect(Stemmer.changeY("yes")).toBe("Yes")
+    expect(Stemmer.changeY("day")).toBe("daY")
+    expect(Stemmer.changeY("mayday")).toBe("maYdaY")
+
   it 'should pass the sample vocabulary', ->
     cases = [
       ["consign", "consign"]
