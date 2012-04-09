@@ -39,6 +39,31 @@ describe 'stemmer', ->
     expect(Stemmer.doStep1A("gaps")).toBe("gap")
     expect(Stemmer.doStep1A("kiwis")).toBe("kiwi")
 
+  it 'should replace eed/eedly with ee', ->
+    expect(Stemmer.doStep1B("seed", 4)).toBe("seed")
+    expect(Stemmer.doStep1B("unseed", 2)).toBe("unsee")
+    expect(Stemmer.doStep1B("disagreed", 3)).toBe("disagree")
+
+  it 'should replace ed/edly/ing/ingly with e', ->
+    expect(Stemmer.doStep1B("luxuriated", 3)).toBe("luxuriate")
+    expect(Stemmer.doStep1B("disabled", 3)).toBe("disable")
+    expect(Stemmer.doStep1B("ostracizing", 3)).toBe("ostracize")
+
+  it 'should remove double + ed/edly/ing/ingly', ->
+    expect(Stemmer.doStep1B("hopped", 3)).toBe("hop")
+
+  it 'should replace short + ed/edly/ing/ingly with e', ->
+    expect(Stemmer.doStep1B("hoped", 3)).toBe("hope")
+    expect(Stemmer.doStep1B("hoping", 3)).toBe("hope")
+
+  it 'should know if a word is short or not', ->
+    expect(Stemmer.isShort("disagreed", 3)).toBe(false)
+    expect(Stemmer.isShort("hop", 3)).toBe(true)
+    expect(Stemmer.isShort("shred", 5)).toBe(true)
+    expect(Stemmer.isShort("shed", 4)).toBe(true)
+    expect(Stemmer.isShort("bead", 4)).toBe(false)
+    expect(Stemmer.isShort("embed", 2)).toBe(false)
+
   it 'should pass the sample vocabulary', ->
     cases = [
       ["consign", "consign"]

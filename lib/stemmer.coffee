@@ -8,6 +8,7 @@ class Stemmer
     startR2 = @getStartR2(word, startR1)
     word = @removeApostrophe(word)
     word = @doStep1A(word)
+    word = @doStep1B(word, startR1)
     word.replace(/Y/g, "y")
 
   @prepareWord: (word) ->
@@ -46,6 +47,20 @@ class Stemmer
     if word.match(/\w*?[aeiouy]\w+s$/)
       return word.slice(0, word.length - 1)
     word
+
+  @doStep1B: (word, startR1) ->
+    if word.search(/(eed|eedly)$/) > startR1
+      return word.replace(/(\w*)(eed|eedly)/, "$1ee")
+    if word.match(/\w*?[aeiouy]\w+(ed|edly|ing|ingly)$/)
+      word = word.match(/^(\w*?[aeiouy]\w+)(ed|edly|ing|ingly)$/)[1]
+      return word + "e" if word.match(/(at|bl|iz)$/)
+      if word.match(/(bb|dd|ff|gg|mm|nn|pp|rr|tt)$/)
+        return word.slice(0, word.length - 1)
+      return word + "e" if @isShort(word, startR1)
+    word
+
+  @isShort: (word, startR1) ->
+    word.match(/^([aeouiy][^aeouiy]|\w*[^aeiouy][aeouiy][^aeouiyYwx])$/) != null and startR1 >= word.length
 
 exports =
   Stemmer: Stemmer
