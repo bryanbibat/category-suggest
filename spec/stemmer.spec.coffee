@@ -64,6 +64,11 @@ describe 'stemmer', ->
     expect(Stemmer.isShort("bead", 4)).toBe(false)
     expect(Stemmer.isShort("embed", 2)).toBe(false)
 
+  it 'should replace ending y with i', ->
+    expect(Stemmer.doStep1C("cry")).toBe("cri")
+    expect(Stemmer.doStep1C("by")).toBe("by")
+    expect(Stemmer.doStep1C("say")).toBe("say")
+
   it 'should pass the sample vocabulary', ->
     cases = [
       ["consign", "consign"]
