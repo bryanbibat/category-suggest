@@ -4,6 +4,7 @@ describe 'stemmer', ->
 
   it 'should lowercase words', ->
     expect(Stemmer.prepareWord("ABC")).toBe("abc")
+    expect(Stemmer.stem("ABC")).toBe("abc")
 
   it 'should remove apostrophes', ->
     expect(Stemmer.removeApostrophe("a'bc")).toBe("a'bc")
@@ -24,6 +25,19 @@ describe 'stemmer', ->
     expect(Stemmer.changeY("yes")).toBe("Yes")
     expect(Stemmer.changeY("day")).toBe("daY")
     expect(Stemmer.changeY("mayday")).toBe("maYdaY")
+
+  it 'should replace sses with ss', ->
+    expect(Stemmer.doStep1A("molasses")).toBe("molass")
+    expect(Stemmer.doStep1A("molassessy")).toBe("molassessy")
+
+  it 'should replace ies/ied with i/ie', ->
+    expect(Stemmer.doStep1A("ties")).toBe("tie")
+    expect(Stemmer.doStep1A("cries")).toBe("cri")
+
+  it 'should remove s if preceding word contains a vowel not immediately before s', ->
+    expect(Stemmer.doStep1A("gas")).toBe("gas")
+    expect(Stemmer.doStep1A("gaps")).toBe("gap")
+    expect(Stemmer.doStep1A("kiwis")).toBe("kiwi")
 
   it 'should pass the sample vocabulary', ->
     cases = [

@@ -1,17 +1,18 @@
 class Stemmer
 
   @stem: (word) ->
-    working = @prepareWord(word)
-    return working if working.length <= 2
-    working = @changeY(working)
-    startR1 = @getStartR1(working)
-    startR2 = @getStartR2(working, startR1)
-    working = @removeApostrophe(working)
+    word = @prepareWord(word)
+    return word if word.length <= 2
+    word = @changeY(word)
+    startR1 = @getStartR1(word)
+    startR2 = @getStartR2(word, startR1)
+    word = @removeApostrophe(word)
+    word = @doStep1A(word)
+    word.replace(/Y/g, "y")
 
   @prepareWord: (word) ->
-    working = word.toLowerCase()
-    working = working.slice(1) if working.charAt(1) == "'"
-    working
+    word = word.toLowerCase()
+    if word.charAt(1) == "'" then word.slice(1) else word
 
   @getStartR1: (word) ->
     startR1 = word.search(/[aeiouy][^aeiouy]/)
@@ -25,14 +26,26 @@ class Stemmer
 
   @changeY: (word) ->
     return word if word.indexOf("y") == -1
-    working = word
-    working = "Y" + working.slice(1) if working.charAt(0) == "y"
-    working.replace(/([aeiou])y/g, "$1Y")
+    word = "Y" + word.slice(1) if word.charAt(0) == "y"
+    word.replace(/([aeiou])y/g, "$1Y")
 
   @removeApostrophe: (word) ->
     match = word.match /^(\w*)('s?)$/
     return word if match == null
     match[1]
+
+  @doStep1A: (word) ->
+    if word.match /sses$/
+      return word.replace /(\w*)sses$/, "$1ss"
+    if word.match /(\w*)(ied|ies)$/
+      if word.match(/(\w*)(ied|ies)$/)[1].length > 1
+        return word.replace /(\w*)(ied|ies)$/, "$1i"
+      else
+        return word.replace /(\w*)(ied|ies)$/, "$1ie"
+    return word if word.match(/(\w*)ss$/)
+    if word.match(/\w*?[aeiouy]\w+s$/)
+      return word.slice(0, word.length - 1)
+    word
 
 exports =
   Stemmer: Stemmer
