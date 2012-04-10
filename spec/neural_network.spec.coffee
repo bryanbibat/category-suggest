@@ -14,9 +14,9 @@ describe 'neural-network', ->
         neg.train([1],[0])
     
     neg.feedforward([0])
-    expect(neg.currentOutputs()[0]).toBeGreaterThan(0.98)
+    expect(neg.currentOutputs()[0]).toBeGreaterThan(0.99)
     neg.feedforward([1])
-    expect(neg.currentOutputs()[0]).toBeLessThan(0.2)
+    expect(neg.currentOutputs()[0]).toBeLessThan(0.1)
 
   it 'should properly handle XOR', ->
     xor = new NeuralNetwork(2, 20, 1)

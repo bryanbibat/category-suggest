@@ -1,15 +1,17 @@
+MtRandom = require("./mt_random").MtRandom
+
 class Synapse
-  constructor: (@sourceNeuron, @destNeuron) ->
-    @prevWeight = @weight = (Math.random() * 2.0) - 1.0
+  constructor: (@sourceNeuron, @destNeuron, prng) ->
+    @prevWeight = @weight = prng.rand()
 
 class Neuron
   learningRate: 1.0
   momentum: 0.5
 
-  constructor: ->
+  constructor: (prng) ->
     @synapsesIn = []
     @synapsesOut = []
-    @prevThreshold = @threshold = (Math.random() * 2.0) - 1.0
+    @prevThreshold = @threshold = prng.rand()
 
   calculateOutput: ->
     activation = (@synapsesIn.reduce (sum, synapse) ->
@@ -44,19 +46,20 @@ class Neuron
 
 class NeuralNetwork
   constructor: (inputs, hidden, outputs) ->
-    @inputLayer = (new Neuron for [1..inputs])
-    @hiddenLayer = (new Neuron for [1..hidden])
-    @outputLayer = (new Neuron for [1..outputs])
+    prng = new MtRandom(1234)
+    @inputLayer = (new Neuron(prng) for [1..inputs])
+    @hiddenLayer = (new Neuron(prng) for [1..hidden])
+    @outputLayer = (new Neuron(prng) for [1..outputs])
 
     for inputNeuron in @inputLayer
       for hiddenNeuron in @hiddenLayer
-        synapse = new Synapse(inputNeuron, hiddenNeuron)
+        synapse = new Synapse(inputNeuron, hiddenNeuron, prng)
         inputNeuron.synapsesOut.push synapse
         hiddenNeuron.synapsesIn.push synapse
 
     for hiddenNeuron in @hiddenLayer
       for outputNeuron in @outputLayer
-        synapse = new Synapse(hiddenNeuron, outputNeuron)
+        synapse = new Synapse(hiddenNeuron, outputNeuron, prng)
         hiddenNeuron.synapsesOut.push synapse
         outputNeuron.synapsesIn.push synapse
 
