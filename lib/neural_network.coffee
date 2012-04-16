@@ -45,17 +45,23 @@ class Neuron
     @prevThreshold = temp
 
 class NeuralNetwork
-  constructor: (inputs, hidden, outputs) ->
-    prng = new MtRandom(1234)
+  constructor: (inputs, hidden, outputs, seed = 1234) ->
+    prng = new MtRandom(seed)
+    console.log "input layer"
     @inputLayer = (new Neuron(prng) for [1..inputs])
+    console.log "hidden layer"
     @hiddenLayer = (new Neuron(prng) for [1..hidden])
+    console.log "output layer"
     @outputLayer = (new Neuron(prng) for [1..outputs])
 
+    console.log "synapse 1"
     for inputNeuron in @inputLayer
       for hiddenNeuron in @hiddenLayer
         synapse = new Synapse(inputNeuron, hiddenNeuron, prng)
         inputNeuron.synapsesOut.push synapse
         hiddenNeuron.synapsesIn.push synapse
+
+    console.log "synapse 2"
 
     for hiddenNeuron in @hiddenLayer
       for outputNeuron in @outputLayer

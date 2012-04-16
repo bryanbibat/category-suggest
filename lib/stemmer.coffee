@@ -2,7 +2,7 @@ class Stemmer
 
   @stem: (word) ->
     word = @prepareWord(word)
-    return word if word.length <= 2
+    return @finalStem(word) if @returnImmediately(word)
     word = @changeY(word)
     startR1 = @getStartR1(word)
     startR2 = @getStartR2(word, startR1)
@@ -14,11 +14,23 @@ class Stemmer
     word = @doStep3(word, startR1, startR2)
     word = @doStep4(word, startR2)
     word = @doStep5(word, startR1, startR2)
-    word.replace(/Y/g, "y")
+    @finalStem(word)
+
+  @finalStem: (word) ->
+    word = word.replace(/Y/g, "y")
+    word.replace(/^'(.*)$/, "$1")
 
   @prepareWord: (word) ->
     word = word.toLowerCase()
+    word = word.replace /^"(.*)"$/, "$1"
+    word = word.replace /^'(.*)'$/, "$1"
+    word = word.replace /^(.*)[\.-]$/, "$1"
     if word.charAt(1) == "'" then word.slice(1) else word
+
+  @returnImmediately: (word) ->
+    return true if word.length <= 2
+    return true if word.search(/[^\w']/) > -1
+    false
 
   @getStartR1: (word) ->
     startR1 = word.search(/[aeiouy][^aeiouy]/)
