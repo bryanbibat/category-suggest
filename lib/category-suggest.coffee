@@ -27,7 +27,8 @@ class CategorySuggest
 
   processCompetitionSet: ->
     reader = Csv.createCsvFileReader(@competitionFile, { columnsFromHeader: true })
-    writer = new Csv.createCsvFileWriter(@resultFile, { "quote": ""} )
+    writer = new Csv.createCsvFileWriter(@resultFile)
+    writer.writeRecord ["title", "category"]
     reader.addListener 'data', (data) =>
       for result in @classifier.classify(data.title)
         writer.writeRecord [data.title, result[0]]
