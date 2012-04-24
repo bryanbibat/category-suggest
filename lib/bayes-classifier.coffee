@@ -6,9 +6,12 @@ class BayesClassifier
       hash[cat] = {}
       hash
     , {})
+    @exactCategories = {}
     @totalWords = 0
 
   train: (category, text) ->
+    @exactCategories[text] = {} unless @exactCategories[text]?
+    @exactCategories[text][category] = true
     for stem in Stemmer.getStems(text)
       if @categories[category][stem]?
         @categories[category][stem]++
@@ -18,13 +21,14 @@ class BayesClassifier
 
   classify: (text) ->
     #console.log @classifications(text)
-    ([k, v] for k, v of @classifications(text) when v >= 0.5).sort (x, y) ->
+    ([k, v] for k, v of @classifications(text) when v >= 0.3).sort (x, y) ->
       y[1] - x[1]
 
   classifications: (text) ->
     score = {}
     for category, catWords of @categories when @containsWords(catWords, text)
       score[category] = 0
+      continue if @exactWords(category, text)
       total = (count for word, count of catWords).reduce (sum, count) ->
         sum += count
       , 0
@@ -41,6 +45,10 @@ class BayesClassifier
     for stem in Stemmer.getStems(text)
       includes = true if stem in words
     includes
+
+  exactWords: (category, text) ->
+    text = text.toLowerCase()
+    @exactCategories[text]? && @exactCategories[text][category]?
 
 exports =
   BayesClassifier: BayesClassifier
