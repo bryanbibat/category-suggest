@@ -9,7 +9,8 @@ class CategorySuggest
     @readCategories()
 
   readCategories: ->
-    reader = Csv.createCsvFileReader(@categoryFile, { columnsFromHeader: true })
+    reader = Csv.createCsvFileReader(@categoryFile)
+    reader.setColumnNames ['title']
     reader.addListener 'data', (data) =>
       @categories.push data.title unless data.title in @categories
     reader.addListener 'end', =>
@@ -17,7 +18,8 @@ class CategorySuggest
       @readTrainingSet()
 
   readTrainingSet: ->
-    reader = Csv.createCsvFileReader(@trainFile, { columnsFromHeader: true })
+    reader = Csv.createCsvFileReader(@trainFile)
+    reader.setColumnNames ['title', 'category']
     reader.addListener 'data', (data) =>
       if data.category in @categories
         product = data.title.toLowerCase()

@@ -21,7 +21,7 @@ class BayesClassifier
 
   classify: (text) ->
     #console.log @classifications(text)
-    ([k, v] for k, v of @classifications(text) when v >= 0.3).sort (x, y) ->
+    ([k, v] for k, v of @classifications(text) when v >= 0.6).sort (x, y) ->
       y[1] - x[1]
 
   classifications: (text) ->
