@@ -37,6 +37,8 @@ class CategorySuggest
         console.log "#{data.title} :: #{result[0]} :: #{(result[1] * 100).toFixed(2)}%"
     reader.addListener 'end', =>
       console.log "Competition set processed. Results can be found in #{@resultFile}"
+    #for stemCount in @classifier.stemCounts()
+    #  console.log "#{stemCount[0]} #{stemCount[1]}"
 exports =
   CategorySuggest: CategorySuggest
 

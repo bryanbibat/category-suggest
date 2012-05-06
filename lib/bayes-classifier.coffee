@@ -1,3 +1,8 @@
+Array::unique = ->
+  output = {}
+  output[@[key]] = @[key] for key in [0...@length]
+  value for key, value of output
+
 Stemmer = require('./stemmer').Stemmer
 
 class BayesClassifier
@@ -7,21 +12,26 @@ class BayesClassifier
       hash
     , {})
     @exactCategories = {}
+    @stems = {}
     @totalWords = 0
 
   train: (category, text) ->
     @exactCategories[text] = {} unless @exactCategories[text]?
     @exactCategories[text][category] = true
-    for stem in Stemmer.getStems(text)
+    for stem in Stemmer.getStems(text).unique()
       if @categories[category][stem]?
         @categories[category][stem]++
       else
         @categories[category][stem] = 1
+      if @stems[stem]?
+        @stems[stem]++
+      else
+        @stems[stem] = 1
       @totalWords++
 
   classify: (text) ->
     #console.log @classifications(text)
-    ([k, v] for k, v of @classifications(text) when v >= 0).sort (x, y) ->
+    ([k, v] for k, v of @classifications(text) when v >= 0.4).sort (x, y) ->
       y[1] - x[1]
 
   classifications: (text) ->
@@ -50,6 +60,10 @@ class BayesClassifier
     text = text.toLowerCase()
     @exactCategories[text]? && @exactCategories[text][category]?
 
+  stemCounts: ->
+    ([k, v] for k, v of @stems).sort (x, y) -> 
+      x[1] - y[1]
+       
 exports =
   BayesClassifier: BayesClassifier
 
