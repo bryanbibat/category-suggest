@@ -161,3 +161,6 @@ describe 'stemmer', ->
     expect(Stemmer.doStep2("conspicuous", 3)).toBe("conspicuous")
     expect(Stemmer.doStep4("conspicuous", 7)).toBe("conspicu")
     expect(Stemmer.stem("conspicuous")).toBe("conspicu")
+
+  it 'should handle loreal', ->
+    expect(Stemmer.stem("L'oréal")).toBe("loreal")
