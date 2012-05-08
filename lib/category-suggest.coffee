@@ -1,5 +1,5 @@
 Csv = require('ya-csv')
-BayesClassifier = require('./bayes-classifier').BayesClassifier
+Classifier = require('./simple-classifier').SimpleClassifier
 
 class CategorySuggest
   constructor: (@categoryFile, @trainFile, @competitionFile, @resultFile) ->
@@ -14,7 +14,7 @@ class CategorySuggest
     reader.addListener 'data', (data) =>
       @categories.push data.title unless data.title in @categories
     reader.addListener 'end', =>
-      @classifier = new BayesClassifier(@categories)
+      @classifier = new Classifier(@categories)
       @readTrainingSet()
 
   readTrainingSet: ->
@@ -25,6 +25,7 @@ class CategorySuggest
         product = data.title.toLowerCase()
         @classifier.train data.category, product
     reader.addListener 'end', =>
+      @classifier.completeTrain()
       @processCompetitionSet()
 
   processCompetitionSet: ->
@@ -34,11 +35,10 @@ class CategorySuggest
     reader.addListener 'data', (data) =>
       for result in @classifier.classify(data.title)
         writer.writeRecord [data.title, result[0]]
-        console.log "#{data.title} :: #{result[0]} :: #{(result[1] * 100).toFixed(2)}%"
+        #console.log "#{data.title} :: #{result[0]} :: #{(result[1] * 100).toFixed(2)}%"
+        console.log "#{data.title} :: #{result[0]} :: #{result[1]} hits"
     reader.addListener 'end', =>
       console.log "Competition set processed. Results can be found in #{@resultFile}"
-    #for stemCount in @classifier.stemCounts()
-    #  console.log "#{stemCount[0]} #{stemCount[1]}"
 exports =
   CategorySuggest: CategorySuggest
 
