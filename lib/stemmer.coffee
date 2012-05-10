@@ -1,5 +1,10 @@
 class Stemmer
 
+  @getStems: (text) ->
+    exclusionList = ["", ",", "/", "&", "of", "the", "by", "a", "*", "-", "'", "'s", "=", ">", "s'", "\"", "~", "and", "with", "for", "in", "500ml"]
+    stems = (@stem(word) for word in text.split /[ ,()!:@\/]/)
+    (word for word in stems when word not in exclusionList and word.search(/^[\d]+(\.[\d]+)?"?$/) == -1 and word.length > 1)
+
   @stem: (word) ->
     word = @prepareWord(word)
     return @finalStem(word) if @returnImmediately(word)
@@ -18,14 +23,27 @@ class Stemmer
 
   @finalStem: (word) ->
     word = word.replace(/Y/g, "y")
-    word.replace(/^'(.*)$/, "$1")
+    word.replace(/'/, "")
 
   @prepareWord: (word) ->
     word = word.toLowerCase()
     word = word.replace /^"(.*)"$/, "$1"
     word = word.replace /^'(.*)'$/, "$1"
     word = word.replace /^(.*)[\.-]$/, "$1"
-    if word.charAt(1) == "'" then word.slice(1) else word
+    word = word.replace(new RegExp("\\s", "g"), "")
+    word = word.replace(new RegExp("[àáâãäå]", "g"), "a")
+    word = word.replace(new RegExp("æ", "g"), "ae")
+    word = word.replace(new RegExp("ç", "g"), "c")
+    word = word.replace(new RegExp("[èéêë]", "g"), "e")
+    word = word.replace(new RegExp("[ìíîï]", "g"), "i")
+    word = word.replace(new RegExp("ñ", "g"), "n")
+    word = word.replace(new RegExp("[òóôõö]", "g"), "o")
+    word = word.replace(new RegExp("œ", "g"), "oe")
+    word = word.replace(new RegExp("[ùúûü]", "g"), "u")
+    word = word.replace(new RegExp("[ýÿ]", "g"), "y")
+    word = word.replace(new RegExp("\\W", "g"), "")
+    #if word.charAt(1) == "'" then word.slice(1) else word
+    word
 
   @returnImmediately: (word) ->
     return true if word.length <= 2
