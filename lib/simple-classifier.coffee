@@ -33,7 +33,7 @@ class SimpleClassifier
     null
 
   classify: (text) ->
-    ([k, v] for k, v of @classifications(text) when v >= 2).sort (x, y) ->
+    ([k, v] for k, v of @classifications(text) when v >= 2 || (v == 1 && Stemmer.getStems(text).length == 1)).sort (x, y) ->
       y[1] - x[1]
 
   classifications: (text) ->
