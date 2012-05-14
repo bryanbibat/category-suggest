@@ -1,9 +1,9 @@
 class Stemmer
 
   @getStems: (text) ->
-    exclusionList = ["", ",", "/", "&", "of", "the", "by", "a", "*", "-", "'", "'s", "=", ">", "s'", "\"", "~", "and", "with", "for", "in", "500ml"]
+    exclusionList = ["", ",", "/", "&", "of", "the", "by", "a", "*", "-", "'", "'s", "=", ">", "s'", "\"", "~", "and", "with", "for", "in", "500ml", "to", "at", "or", "n", "x", "pcs"]
     stems = (@stem(word) for word in text.split /[ ,()!:@\/]/)
-    (word for word in stems when word not in exclusionList and word.search(/^[\d]+(\.[\d]+)?"?$/) == -1 and word.length > 1)
+    (word for word in stems when word not in exclusionList and word.search(/^[\d]+(\.[\d]+)?"?$/) == -1)
 
   @stem: (word) ->
     word = @prepareWord(word)

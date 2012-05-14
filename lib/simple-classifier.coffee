@@ -8,7 +8,6 @@ Stemmer = require('./stemmer').Stemmer
 class SimpleClassifier
   constructor: (@categories) ->
     @priorData = []
-    @relatedCat = {}
     @loadSynonyms()
 
   loadSynonyms: ->
@@ -16,11 +15,21 @@ class SimpleClassifier
     @synonyms = JSON.parse(fs.readFileSync("./synonyms.js", "utf8"))
 
   train: (category, text) ->
-    @priorData.push [ Stemmer.getStems(text).unique(), category ]
-    @relatedCat[text] = [] unless @relatedCat[text]?
-    @relatedCat[text].push category unless category in @relatedCat[text]
+    @priorData.push [ Stemmer.getStems(text), category ]
   
   completeTrain: ->
+    stemsArr = (data[0] for data in @priorData)
+    stemCount = {}
+    for stems in stemsArr
+      for stem in stems
+        unless stemCount[stem]?
+          stemCount[stem] = 0
+        stemCount[stem]++
+    stemCount = ([stem, count] for stem, count of stemCount)
+    stemCount.sort (x, y) ->
+      x[1] - y[1]
+    #for stem in stemCount
+      #console.log "#{stem}"
     null
 
   classify: (text) ->
@@ -28,10 +37,10 @@ class SimpleClassifier
       y[1] - x[1]
 
   classifications: (text) ->
-    score = {}
-    stems = Stemmer.getStems(text).unique()
+    score = @baseScoreOnCategories(text)
+    stems = Stemmer.getStems(text)
     for priorData in @priorData
-      currentScore = (stem for stem in stems when stem in priorData[0]).length
+      currentScore = @getScore(priorData[0], stems)
       if currentScore > 0
         if score[priorData[1]]?
           score[priorData[1]] = currentScore if score[priorData[1]] < currentScore
@@ -46,6 +55,25 @@ class SimpleClassifier
             score[parentCat] = v
             changed = true
     score
+
+  baseScoreOnCategories: (text) ->
+    score = {}
+    for category in @categories when category.length > 1
+      if text.indexOf(category.trim()) != -1
+        score[category] = Stemmer.getStems(text).length
+    score
+
+  getScore: (trainStems, textStems) ->
+    originalLength = textStems.length
+    working = (stem for stem in textStems)
+    for trainStem in trainStems
+      if trainStem in working
+        idx = working.indexOf(trainStem)
+        working.splice(idx, 1)
+    #if (stem for stem in trainStems when stem in textStems).length > 0
+      #console.log "[#{trainStems}] [#{textStems}] [#{working}]"
+      #console.log originalLength - textStems.length
+    originalLength - working.length
        
 exports =
   SimpleClassifier: SimpleClassifier

@@ -164,3 +164,5 @@ describe 'stemmer', ->
 
   it 'should handle loreal', ->
     expect(Stemmer.stem("L'oréal")).toBe("loreal")
+    expect(Stemmer.stem("Nescafé")).toBe("nescaf")
+    expect(Stemmer.stem("Nescafe")).toBe("nescaf")
