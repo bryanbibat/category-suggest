@@ -1,4 +1,5 @@
 .*.sw[a-z]
 *.un~
 *.csv
+*.txt
 node_modules

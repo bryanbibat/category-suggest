@@ -1,8 +1,3 @@
-Array::unique = ->
-  output = {}
-  output[@[key]] = @[key] for key in [0...@length]
-  value for key, value of output
-
 Stemmer = require('./stemmer').Stemmer
 
 class SimpleClassifier
@@ -28,13 +23,13 @@ class SimpleClassifier
     stemCount = ([stem, count] for stem, count of stemCount)
     stemCount.sort (x, y) ->
       x[1] - y[1]
-    #for stem in stemCount
-      #console.log "#{stem}"
-    null
 
   classify: (text) ->
-    ([k, v] for k, v of @classifications(text) when v >= 2 || (v == 1 && Stemmer.getStems(text).length == 1)).sort (x, y) ->
+    ([k, v] for k, v of @classifications(text) when @screenResult(text, v)).sort (x, y) ->
       y[1] - x[1]
+
+  screenResult: (text, v) ->
+      v >= 2 || (v == 1 && Stemmer.getStems(text).length == 1)
 
   classifications: (text) ->
     score = @baseScoreOnCategories(text)
