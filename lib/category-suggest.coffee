@@ -35,7 +35,6 @@ class CategorySuggest
     reader.addListener 'data', (data) =>
       for result in @classifier.classify(data.title)
         writer.writeRecord [data.title, result[0]]
-        #console.log "#{data.title} :: #{result[0]} :: #{(result[1] * 100).toFixed(2)}%"
         console.log "#{data.title} :: #{result[0]} :: #{result[1]} hits"
     reader.addListener 'end', =>
       console.log "Competition set processed. Results can be found in #{@resultFile}"

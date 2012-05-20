@@ -2,9 +2,12 @@
   "Absinthe": [
     "Alcohol"
   ],
+  "Alcohol": [
+    "Drinks"
+  ],
   "beer": [
     "Alcohol",
-    "Beverage"
+    "Bottle Drink"
   ],
   "Bar Liqueur": [
     "Alcohol"
@@ -14,157 +17,148 @@
   ],
   "Apple Iphone": [
     "Apple",
-    "Mobile Phone"
+    "Handphone"
   ],
   "macbook": [
-    "Apple"
+    "Apple",
+    "Laptop"
   ],
   "Organic Fruit": [
     "Fruit"
   ],
   "Organic Apple": [
     "Apple",
-    "Fruit"
+    "Organic Fruit"
   ],
   "iphone Casing": [
-    "Apple Iphone"
+    "iPhone accessories"
   ],
   "Iphone": [
-    "Apple Iphone",
-    "Mobile Phone"
+    "Apple Iphone"
   ],
   "iPhone accessories": [
-    "Apple Iphone",
-    "Mobile Phone"
+    "Iphone"
   ],
   "Iphone 4S": [
-    "Apple Iphone",
     "Iphone 4"
   ],
+  "Iphone 4": [
+    "Iphone"
+  ],
   "Bright Ale": [
-    "beer",
+    "Pale Ale",
     "Little Creatures"
   ],
   "Pale Ale": [
     "beer"
   ],
   "car Accessories": [
-    "Automotive"
+    "Car"
   ],
   "Wiper": [
-    "Automotive",
-    "Car",
+    "Car Essentials",
     "car Accessories"
   ],
   "Car Essentials": [
-    "Automotive",
-    "Car",
-    "car Accessories"
+    "Car"
   ],
   "Baby Care": [
-    "Baby",
-    "BABY PRODUCT"
+    "Baby Products"
   ],
   "BABY HYGIENIC CARE": [
-    "Baby",
-    "BABY PRODUCT"
+    "Baby Care"
   ],
   "Baby Wipes": [
-    "Baby",
-    "Baby Care",
-    "BABY HYGIENIC CARE",
-    "BABY PRODUCT",
-    "Baby Products"
+    "BABY HYGIENIC CARE"
   ],
   "Baby Toys": [
-    "Baby",
-    "BABY PRODUCT"
+    "Baby Products",
+    "soft Toy"
   ],
   "Baby Book": [
-    "Baby",
-    "BABY PRODUCT"
+    "Baby Products"
   ],
   "Baby Diaper": [
-    "Baby",
-    "BABY DISPOSABLE DIAPER",
-    "BABY PRODUCT",
-    "Baby Products"
+    "BABY HYGIENIC CARE"
   ],
   "BABY DISPOSABLE DIAPER": [
-    "Baby",
-    "BABY PRODUCT",
-    "Baby Products"
+    "Baby Diaper"
+  ],
+  "BABY PRODUCT": [
+    "Baby"
+  ],
+  "Baby Products": [
+    "BABY PRODUCT"
   ],
   "baby Drink": [
-    "Baby",
-    "BABY PRODUCT",
     "Baby Products"
   ],
   "Baby Bottle": [
-    "Baby",
-    "BABY PRODUCT",
     "Baby Products"
   ],
   "baby body Wash": [
-    "Baby Care",
-    "BABY HYGIENIC CARE",
-    "Baby Products"
+    "Body Wash",
+    "BABY HYGIENIC CARE"
+  ],
+  "High Calcium Low Fat Milk": [
+    "Milk Adult"
   ],
   "Milk Adult": [
-    "High Calcium Low Fat Milk"
+    "Milk"
+  ],
+  "Milk": [
+    "Milks"
   ],
   "Infant Formula": [
     "BABY MILK POWDER"
   ],
-  "soft Toy": [
-    "Baby Toys"
+  "BABY MILK POWDER": [
+    "baby Drink",
+    "Milk"
+  ],
+  "Baby Toys": [
+    "soft Toy"
   ],
   "CUP CAKE & MUFFINS": [
-    "Bakery Products"
+    "Bakery Products",
+    "tidbits"
   ],
   "baking set": [
     "Bakery Products"
   ],
   "TOILET CLEANER": [
-    "bathroom product"
-  ],
-  "Cleaner": [
     "bathroom product",
-    "TOILET CLEANER"
+    "Cleaner"
   ],
   "Body Wash": [
-    "bathroom product"
+    "bathroom product",
+    "Body Care"
   ],
   "emergency Charger": [
     "battery Charger",
-    "Handphone",
-    "Mobile Phone",
-    "Mobile Phones"
+    "Handphone"
   ],
-  "Automotive": [
-    "Car"
+  "Car": [
+    "Automotive"
   ],
   "Face Cream": [
-    "Beauty"
+    "facial Care",
+    "Cream"
   ],
   "Skin Products": [
-    "beauty Products"
+    "body Care"
   ],
-  "bathroom product": [
-    "beauty Products"
+  "SKIN CARE": [
+    "Skin Products"
   ],
   "COSMETICS": [
     "beauty Products"
   ],
   "hair Products": [
-    "beauty Products"
+    "COSMETICS"
   ],
   "hair Dye": [
-    "beauty Products",
     "hair Products"
-  ],
-  "Dry": [
-    "beer"
   ],
   "Draft": [
     "beer"
@@ -176,22 +170,29 @@
     "beer"
   ],
   "Beverages": [
-    "Beverage",
-    "Bottle Drink"
+    "Drinks"
+  ],
+  "Beverage": [
+    "Beverages"
+  ],
+  "Bottle Drink": [
+    "Beverage"
   ],
   "Water Dispenser": [
-    "Beverage"
+    "Mineral / Drinking Waters"
   ],
   "Green Tea": [
-    "Beverage"
+    "Beverage",
+    "Coffee/Tea"
   ],
   "Biscuits / Junk Foods": [
-    "Biscuit",
     "tidbits"
   ],
   "Biscuits": [
-    "Biscuit",
     "Biscuits / Junk Foods"
+  ],
+  "Biscuit": [
+    "Biscuits"
   ],
   "COOKIES": [
     "Biscuit"
@@ -202,10 +203,11 @@
   ],
   "Jawbone": [
     "Bluetooth",
-    "Headset"
+    "Headset",
+    "Portable"
   ],
-  "earpiece ": [
-    "earphone"
+  "earphone ": [
+    "earpiece"
   ],
   "Alba": [
     "Body Care"
@@ -217,7 +219,7 @@
     "Body Care"
   ],
   "Body Lotion": [
-    "Body Care"
+    "SKIN CARE"
   ],
   "body Soap": [
     "Body Care"
@@ -227,10 +229,9 @@
     "Perfume"
   ],
   "Perfume": [
-    "Body Care"
+    "COSMETICS"
   ],
   "Cookbooks": [
-    "Book",
     "Books"
   ],
   "Books": [
@@ -240,7 +241,6 @@
     "Book"
   ],
   "Maths": [
-    "Book",
     "Books"
   ],
   "Assesment Books": [
@@ -249,9 +249,6 @@
   "notebook": [
     "Book",
     "stationary"
-  ],
-  "stationary": [
-    "Book"
   ],
   "Dictionary": [
     "Book"
@@ -269,61 +266,61 @@
     "Bottle Drink"
   ],
   "Bottled Tea": [
-    "Bottle Drink"
+    "Bottle Drink",
+    "Coffee/Tea"
   ],
   "SOFT DRINKS": [
     "Bottle Drink"
   ],
-  "Beverage": [
-    "Bottle Drink"
-  ],
   "Soda": [
-    "Bottle Drink",
-    "SOFT DRINKS"
+    "Carbonated Drink"
   ],
   "H-two-o": [
     "Bottle Drink",
     "Sports"
   ],
   "Carbonated Drink": [
-    "Bottle Drink",
     "SOFT DRINKS"
   ],
   "Lemon Tea": [
-    "Bottle Drink"
+    "Bottle Tea"
   ],
   "Car Wax": [
     "Car"
   ],
   "Car Polish": [
-    "Car",
     "Car Wax"
   ],
   "Armorall": [
-    "Car",
-    "Car Wax"
+    "Car Polish"
   ],
   "shampoo": [
-    "Toiletries"
+    "Toiletries",
+    "HAIR CARE"
   ],
   "Soda Water": [
-    "Carbonated Drink"
+    "Soda"
   ],
   "CORN CHIPS": [
-    "Chips",
-    "Snack"
-  ],
-  "Snack": [
     "Chips"
   ],
+  "Chips": [
+    "tidbits"
+  ],
+  "Snack": [
+    "snacks"
+  ],
   "snacks": [
-    "Snack"
+    "food"
   ],
   "Milk Chocolate": [
     "Chocolate"
   ],
   "Chocolate Candies": [
     "Chocolate"
+  ],
+  "Chocolate": [
+    "food"
   ],
   "Cotton On": [
     "Clothes"
@@ -337,11 +334,14 @@
   "Blouse": [
     "Clothes"
   ],
-  "Apparels": [
-    "Clothes"
+  "Clothes": [
+    "Apparels"
+  ],
+  "Coffee": [
+    "Coffee/Tea"
   ],
   "Coffee/Tea": [
-    "Coffee"
+    "Beverage"
   ],
   "Instant Coffee": [
     "Coffee"
@@ -353,59 +353,62 @@
     "Computers & Games"
   ],
   "foundation": [
-    "COSMETICS"
+    "Make Up"
   ],
   "Make Up": [
     "COSMETICS"
   ],
   "MOISTURIZER": [
-    "Cream"
+    "Cream",
+    "Body Care"
   ],
   "mouth Wash": [
     "Dental"
   ],
+  "Dental": [
+    "Body Care"
+  ],
   "Wet Wipes": [
     "Wet Tissue"
+  ],
+  "Wet Tissue": [
+    "TISSUES"
   ],
   "hand Soap": [
     "Hand Wash"
   ],
-  "HAND CARE": [
-    "Hand Wash"
+  "Hand Wash": [
+    "HAND CARE"
   ],
   "Health & Supplement": [
-    "Dietry Supplement ",
+    "SUPPLEMENTS"
+  ],
+  "Health Supplement": [
+    "Health & Supplement"
+  ],
+  "Dietry Supplement ": [
     "Health Supplement"
   ],
   "Vitamin": [
     "Dietry Supplement "
   ],
   "Dog Can Food": [
-    "DOG FOOD",
-    "pet Food",
-    "PET PRODUCT"
+    "DOG FOOD"
   ],
   "Energy drinks": [
-    "Drinks"
+    "Bottle Drink"
   ],
   "SOYA MILK": [
-    "Drinks"
+    "Beverage"
   ],
   "Headphones": [
-    "earphone",
-    "earpiece "
+    "earphone"
   ],
   "Nokia Phone": [
-    "Handphone",
-    "Mobile Phone",
-    "Mobile Phones",
-    "Telecommunication"
+    "Handphone"
   ],
   "Headset": [
     "earphone"
-  ],
-  "Iphone 4": [
-    "Mobile Phone"
   ],
   "Bluetooth": [
     "earpiece ",
@@ -434,10 +437,10 @@
     "Electronic"
   ],
   "Computer Mouse": [
-    "Electronic"
+    "Computers & Games"
   ],
   "Mouse": [
-    "Electronic"
+    "Computers Mouse"
   ],
   "Portable Charger": [
     "emergency Charger"
@@ -445,16 +448,12 @@
   "Backup Battery": [
     "emergency Charger"
   ],
-  "CLEANSER (Regular)": [
-    "facial Care"
-  ],
   "Face Mask": [
     "facial Care",
-    "facial Product",
     "Medical Consumables"
   ],
-  "electrical Appliances": [
-    "Fans"
+  "Fans": [
+    "electrical Appliances"
   ],
   "bread Crumbs": [
     "food"
@@ -463,29 +462,36 @@
     "Frozen Foods"
   ],
   "Pizza": [
-    "Frozen Foods",
-    "Instant Food"
+    "Frozen Foods"
   ],
   "Fresh Fruit": [
     "Fruit"
   ],
+  "Fruit": [
+   "food"
+  ],
   "Laptop": [
-    "Multi-Purpose"
+    "Multi-Purpose",
+    "Computer & Tablet/Slate"
   ],
   "Desktop": [
-    "Multi-Purpose"
-  ],
-  "Bird's Nest": [
-    "GIFT IDEAS"
+    "Multi-Purpose",
+    "Computer & Tablet/Slate"
   ],
   "CHILLI POWDER": [
     "spice"
   ],
   "Paprika": [
-    "spice",
-    "Spicy"
+    "spice"
+  ],
+  "spice": [
+    "Spicy",
+    "food"
   ],
   "hair c": [
+    "Hair Colouring"
+  ],
+  "Hair Colouring": [
     "hair Dye"
   ],
   "Hair Gel": [
@@ -497,21 +503,36 @@
   "handphone pouch": [
     "Handphone"
   ],
+  "Handphone": [
+    "Mobile Phone"
+  ],
+  "Mobile Phone": [
+    "Mobile Phones"
+  ],
+  "Mobile Phones": [
+    "Telecommunication",
+    "Portable"
+  ],
   "Health Drink": [
     "Health Supplement"
   ],
-  "Dietry Supplement ": [
-    "Health Supplement"
-  ],
   "Shoe Insole": [
-    "Heels",
+    "Heels"
+  ],
+  "Heels": [
     "shoes"
+  ],
+  "shoes": [
+    "Apparels"
   ],
   "Nin Jiom": [
     "Herbal"
   ],
   "Instant Heater": [
     "Home Shower"
+  ],
+  "bathroom product": [
+    "Instant Heater"
   ],
   "FLOOR MOP": [
     "Household Care"
@@ -525,9 +546,11 @@
   "Frozen Foods": [
     "Instant Food"
   ],
+  "Instant Food": [
+    "food"
+  ],
   "Jambox": [
-    "Jawbone",
-    "Portable"
+    "Jawbone"
   ],
   "Sony Led Tv": [
     "LED TV"
@@ -551,13 +574,16 @@
     "Medicine"
   ],
   "Tcm": [
-    "Medicine"
+    "Chinese Medicine"
   ],
   "Chinese Medicine": [
     "Medicine"
   ],
+  "MINERAL WATER": [
+    "Mineral / Drinking Waters"
+  ],
   "Mineral / Drinking Waters": [
-    "MINERAL WATER"
+    "Beverage"
   ],
   "Notebooks": [
     "notebook"
@@ -565,61 +591,64 @@
   "Manuka": [
     "Organic Food"
   ],
+  "Organic Food": [
+    "food"
+  ],
+  "Pet Care": [
+    "PET PRODUCT"
+  ],
+  "pet Food": [
+    "Pet Care"
+  ],
   "Dog Supplement": [
-    "Pet Care",
-    "PET PRODUCT",
     "Pet Supplement"
+  ],
+  "Pet Supplement": [
+    "Pet Care"
   ],
   "Dog Grooming": [
     "Pet Care"
   ],
   "DOG FOOD": [
-    "pet Food",
-    "PET PRODUCT"
+    "pet Food"
   ],
   "Cat Food": [
-    "pet Food",
-    "PET PRODUCT"
+    "pet Food"
   ],
   "Dog Treats": [
-    "pet Food",
-    "PET PRODUCT",
+    "DOG FOOD",
     "Pet Treats"
   ],
   "Pet Treats": [
-    "pet Food",
-    "PET PRODUCT"
-  ],
-  "Pet Supplement": [
-    "PET PRODUCT"
-  ],
-  "Pet Care": [
-    "PET PRODUCT"
+    "pet Food"
   ],
   "Rice": [
-    "Rice & Grains"
+    "Rices"
   ],
   "THAI FRAGRANT RICE": [
-    "Rice & Grains"
+    "Rice"
   ],
   "Rices": [
     "Rice & Grains"
+  ],
+  "Rice & Grains": [
+    "food"
   ],
   "Crocs Duet": [
     "shoes"
   ],
   "Sport Shoes": [
-    "shoes"
-  ],
-  "Heels": [
-    "shoes"
+    "shoes",
+    "Sports"
   ],
   "facial Care": [
+    "facial Product"
+  ],
+  "facial Product": [
     "SKIN CARE"
   ],
   "Men's Grooming": [
-    "SKIN CARE",
-    "Skin Products"
+    "SKIN CARE"
   ],
   "QV": [
     "SKIN CARE"
@@ -630,11 +659,20 @@
   "Bb Cream": [
     "SKIN CARE"
   ],
+  "HAND CARE": [
+    "Body Care"
+  ],
   "tibits": [
+    "tidbits"
+  ],
+  "titbits": [
+    "tidbits"
+  ],
+  "tidbits": [
     "Snack"
   ],
   "CHOCOLATE BAR": [
-    "Snack",
+    "Chocolate",
     "tidbits"
   ],
   "Wafer": [
@@ -644,14 +682,10 @@
     "snacks"
   ],
   "potato Chips": [
-    "snacks"
+    "Chips"
   ],
   "Dr Pepper": [
-    "Soda",
-    "SOFT DRINKS"
-  ],
-  "spice": [
-    "Spicy"
+    "Soda"
   ],
   "Running": [
     "Sports"
@@ -668,20 +702,33 @@
   "fish oil": [
     "SUPPLEMENTS"
   ],
+  "The Body Shop": [
+    "BODY CARE (Regular)"
+  ],
   "BODY CARE (Regular)": [
-    "The Body Shop"
+    "Body Care"
   ],
   "prawn cracker": [
     "tibits"
   ],
   "Watson Wallet Tissues": [
-    "TISSUES"
+    "Tissue Products"
   ],
   "Tissue Products": [
     "TISSUES"
   ],
+  "TISSUES": [
+    "Toiletries"
+  ],
+  "beauty Products": [
+    "Toiletries",
+    "beauty"
+  ],
   "Toothpaste": [
     "TOOTH CARE"
+  ],
+  "TOOTH CARE": [
+    "Dental"
   ],
   "Toothpaste Dispenser": [
     "Toothpaste"
