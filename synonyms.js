@@ -87,6 +87,9 @@
   "BABY PRODUCT": [
     "Baby"
   ],
+  "Baby": [
+    "Babies"
+  ],
   "Baby Products": [
     "BABY PRODUCT"
   ],
@@ -146,7 +149,7 @@
     "Cream"
   ],
   "Skin Products": [
-    "body Care"
+    "Body Care"
   ],
   "SKIN CARE": [
     "Skin Products"
@@ -206,8 +209,8 @@
     "Headset",
     "Portable"
   ],
-  "earphone ": [
-    "earpiece"
+  "earphone": [
+    "earpiece "
   ],
   "Alba": [
     "Body Care"
@@ -283,7 +286,7 @@
     "SOFT DRINKS"
   ],
   "Lemon Tea": [
-    "Bottle Tea"
+    "Bottled Tea"
   ],
   "Car Wax": [
     "Car"
@@ -440,7 +443,7 @@
     "Computers & Games"
   ],
   "Mouse": [
-    "Computers Mouse"
+    "Computer Mouse"
   ],
   "Portable Charger": [
     "emergency Charger"
@@ -531,8 +534,8 @@
   "Instant Heater": [
     "Home Shower"
   ],
-  "bathroom product": [
-    "Instant Heater"
+  "Instant Heater": [
+    "bathroom product"
   ],
   "FLOOR MOP": [
     "Household Care"
@@ -665,9 +668,6 @@
   "tibits": [
     "tidbits"
   ],
-  "titbits": [
-    "tidbits"
-  ],
   "tidbits": [
     "Snack"
   ],
@@ -722,7 +722,7 @@
   ],
   "beauty Products": [
     "Toiletries",
-    "beauty"
+    "Beauty"
   ],
   "Toothpaste": [
     "TOOTH CARE"

@@ -8,6 +8,17 @@ class SimpleClassifier
   loadSynonyms: ->
     fs = require 'fs'
     @synonyms = JSON.parse(fs.readFileSync("./synonyms.js", "utf8"))
+    for k, v of @synonyms
+      for val in v
+        @synonyms[k] = (val for val in v when (val in @categories))
+      if k not in @categories
+        @synonyms[k] = []
+    for k, v of @synonyms
+      for val in v
+        notin = (val for val in v when val not in @categories)
+        console.log notin if notin.length > 1
+      if k not in @categories
+        console.log k
 
   train: (category, text) ->
     @priorData.push [ Stemmer.getStems(text), category ]
@@ -51,8 +62,9 @@ class SimpleClassifier
     score
 
   baseScoreOnCategories: (text) ->
-    @categories.filter( (category) ->
-      category.length > 1 && text.indexOf(category.trim()) != -1
+    @categories.filter( (category) =>
+      catStems = Stemmer.getStems(category)
+      catStems.length > 0 && @getScore(Stemmer.getStems(text), catStems) == catStems.length
     ).reduce (score, category) ->
       score[category] = Stemmer.getStems(text).length
       score
