@@ -13,12 +13,6 @@ class SimpleClassifier
         @synonyms[k] = (val for val in v when (val in @categories))
       if k not in @categories
         @synonyms[k] = []
-    for k, v of @synonyms
-      for val in v
-        notin = (val for val in v when val not in @categories)
-        console.log notin if notin.length > 1
-      if k not in @categories
-        console.log k
 
   train: (category, text) ->
     @priorData.push [ Stemmer.getStems(text), category ]
