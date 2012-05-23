@@ -38,6 +38,7 @@ class CategorySuggest
         console.log "#{data.title} :: #{result[0]} :: #{result[1]} hits"
     reader.addListener 'end', =>
       console.log "Competition set processed. Results can be found in #{@resultFile}"
+
 exports =
   CategorySuggest: CategorySuggest
 

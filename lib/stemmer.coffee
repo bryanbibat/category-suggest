@@ -1,4 +1,6 @@
 class Stemmer
+  # Custom implementation of the Porter2 stemming algorithm
+  # http://snowball.tartarus.org/algorithms/english/stemmer.html
 
   @getStems: (text) ->
     exclusionList = ["", ",", "/", "&", "of", "the", "by", "a", "*", "-", "'", "'s", "=", ">", "s'", "\"", "~", "and", "with", "for", "in", "500ml", "to", "at", "or", "n", "x", "pcs"]
@@ -30,19 +32,19 @@ class Stemmer
     word = word.replace /^"(.*)"$/, "$1"
     word = word.replace /^'(.*)'$/, "$1"
     word = word.replace /^(.*)[\.-]$/, "$1"
-    word = word.replace(new RegExp("\\s", "g"), "")
-    word = word.replace(new RegExp("[àáâãäå]", "g"), "a")
-    word = word.replace(new RegExp("æ", "g"), "ae")
-    word = word.replace(new RegExp("ç", "g"), "c")
-    word = word.replace(new RegExp("[èéêë]", "g"), "e")
-    word = word.replace(new RegExp("[ìíîï]", "g"), "i")
-    word = word.replace(new RegExp("ñ", "g"), "n")
-    word = word.replace(new RegExp("[òóôõö]", "g"), "o")
-    word = word.replace(new RegExp("œ", "g"), "oe")
-    word = word.replace(new RegExp("[ùúûü]", "g"), "u")
-    word = word.replace(new RegExp("[ýÿ]", "g"), "y")
-    word = word.replace(new RegExp("\\W", "g"), "")
-    #if word.charAt(1) == "'" then word.slice(1) else word
+    word = word.replace /\\s/g , ""
+    word = word.replace /Â´/g, "'"
+    word = word.replace /[àáâãäå]/g, "a"
+    word = word.replace /æ/g, "ae"
+    word = word.replace /ç/g, "c"
+    word = word.replace /[èéêë]/g, "e"
+    word = word.replace /[ìíîï]/g, "i"
+    word = word.replace /ñ/g, "n"
+    word = word.replace /[òóôõö]/g, "o"
+    word = word.replace /œ/g, "oe"
+    word = word.replace /[ùúûü]/g, "u"
+    word = word.replace /[ýÿ]/g, "y"
+    word = word.replace /\\W/g, ""
     word
 
   @returnImmediately: (word) ->

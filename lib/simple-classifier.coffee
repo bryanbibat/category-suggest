@@ -1,6 +1,13 @@
 Stemmer = require('./stemmer').Stemmer
 
 class SimpleClassifier
+  # A classifier that matches the competition set (text) with the categories
+  # using any of the following criteria:
+  #   * all stems of the category are in the text
+  #   * all stems of the text are in the category
+  #   * there are 2 or more matched stems between the text and category
+  #   * the category is synonymous to a category that was previously matched
+
   constructor: (@categories) ->
     @priorData = []
     @loadSynonyms()
@@ -8,6 +15,9 @@ class SimpleClassifier
   loadSynonyms: ->
     fs = require 'fs'
     @synonyms = JSON.parse(fs.readFileSync("./synonyms.js", "utf8"))
+    @removeInvalidSynonyms()
+
+  removeInvalidSynonyms: ->
     for k, v of @synonyms
       for val in v
         @synonyms[k] = (val for val in v when (val in @categories))

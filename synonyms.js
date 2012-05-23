@@ -1,4 +1,48 @@
 {
+  "Japanese": [
+    " Japan"
+  ],
+  "Can Food": [
+    "Canned Food"
+  ],
+  "Canned Food": [
+    "Canned Foods"
+  ],
+  "Canned Foods": [
+    "food"
+  ],
+  "Can Drink": [
+    "Drinks"
+  ],
+  "Canon DSLR": [
+    "Cameras",
+    "Digital Camera"
+  ],
+  "Digital Camera": [
+    "Electronic"
+  ],
+  "TV": [
+    "Electronic",
+    "Home Entertainment"
+  ],
+  "Home Entertainment": [
+    "Home Appliances"
+  ],
+  "Digital": [
+    "Electronic"
+  ],
+  "butter": [
+    "food"
+  ],
+  "Japan Food": [
+    "food"
+  ],
+  "Chicken": [
+    "food"
+  ],
+  "Dettol": [
+    "Body Care"
+  ],
   "Absinthe": [
     "Alcohol"
   ],
@@ -324,6 +368,24 @@
   ],
   "Chocolate": [
     "food"
+  ],
+  "BRA & PANTY SET": [
+    "Bra"
+  ],
+  "Boxers": [
+    "underwear"
+  ],
+  "Brief": [
+    "underwear"
+  ],
+  "Disposable Cotton Panties": [
+    "underwear"
+  ],
+  "Bra": [
+    "underwear"
+  ],
+  "underwear": [
+    "Clothes"
   ],
   "Cotton On": [
     "Clothes"
